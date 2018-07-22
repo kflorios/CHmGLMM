@@ -1,0 +1,16 @@
+Package: CHmGLMM
+Type: Package
+Title: Pairwise likelihood methods for multivariate GLMM using CLIC
+        Heuristic methods
+Version: 0.3
+Date: 2015-11-24
+Author: Kostas Florios <cflorios@aueb.gr>
+Maintainer: Kostas Florios <cflorios@aueb.gr>
+Description: Pairwise likelihood methods for multivariate generalized linear
+    mixed models using CLIC heuristic methods
+Depends: R (>= 3.0.1), lme4, xtable
+License: MIT
+LazyData: true
+RoxygenNote: 5.0.1
+NeedsCompilation: no
+Packaged: 2015-11-24 13:42:34 UTC; Gregory
