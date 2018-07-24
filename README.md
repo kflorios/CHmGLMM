@@ -25,3 +25,10 @@ Verbeke, 2006) for the random effects parameters and the DWAVE/WAVE estimators
 for the fixed effects parameters. The new estimator CWAVE performs very well in both
 fixed and random effects parameters identification, with high coverage, especially when
 T is large, regardless of the size of N.
+
+# Install
+install.packages("devtools")
+
+require(devtools)
+
+install_github("kflorios/CHmGLMM")
