@@ -43,9 +43,12 @@ estimateModelFit2 <- function(Data,Q,n) {
       #                     data = DD, family = binomial, nAGQ=3, verbose=T, control=list(maxIter=500, maxFN=1500))     #Florios
       ##Models[[i]] <- glmer(y ~ 0 + outcome + outcome:(time) + ( 0 + outcome + outcome:time | id ), 
       ##                     data = DD, family = binomial(logit), nAGQ=3, verbose=T, control=list(maxIter=500, maxFN=1500))     #Florios
+      ###Models[[i]] <- glmer(y ~ 0 + outcome + outcome:(time) + ( 0 + outcome + outcome:time  | id ), 
+      ###                     data = DD, family = binomial(logit), nAGQ=1, verbose=T, control=glmerControl(optCtr=list(maxfun=1000)))     #Florios
       Models[[i]] <- glmer(y ~ 0 + outcome + outcome:(time) + ( 0 + outcome + outcome:time  | id ), 
-                           data = DD, family = binomial(logit), nAGQ=1, verbose=T, control=glmerControl(optCtr=list(maxfun=1000)))     #Florios
-      
+                           data = DD, family = binomial(logit), nAGQ=1, verbose=2, 
+                                      control=glmerControl(optimizer="Nelder_Mead"))     #Florios
+
       cp<-i
       #1
       #Florios K-L pair of items
@@ -74,8 +77,10 @@ estimateModelFit2 <- function(Data,Q,n) {
     for (i in 1:Q) {
       yi <- Data[[paste("y", indic[i], sep = "")]]
       DDD$y <- c(yi)  
+      ##ModelsOne[[i]] <- glmer(y ~ time + ( time  | id ), 
+      ##                        data = DDD, family = binomial(logit), nAGQ=1, verbose=T, control=glmerControl(optCtr=list(maxfun=1000)))     #Florios
       ModelsOne[[i]] <- glmer(y ~ time + ( time  | id ), 
-                              data = DDD, family = binomial(logit), nAGQ=1, verbose=T, control=glmerControl(optCtr=list(maxfun=1000)))     #Florios
+                              data = DDD, family = binomial(logit), nAGQ=1, verbose=2, control=glmerControl(optimizer="Nelder_Mead"))     #Florios     
       
       ###Sigma2YiRIone[[i]]   <- VarCorr(ModelsOne[[i]])$id[1,1]
       ###Sigma2YiRSone[[i]]   <- VarCorr(ModelsOne[[i]])$id[2,2]
